@@ -1,0 +1,658 @@
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-lg">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+
+      <div class="modal-body">
+        <div class="alert alert-info" style="background-color: #28426C" role="alert">
+          <h5> <i class="material-icons pull-left" style="background-color:#28426C; color:white;">add_alert</i>The work
+            experience section on a resume is the nucleus around which other sections are built
+            <button type="button" style="color:white" class="close pull-right" data-dismiss="modal">&times;</button>
+          </h5>
+        </div>
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-header card-header-icon">
+              <div class="card-icon" style="background-color:#28426C">
+                <i class="material-icons">perm_identity</i>
+              </div>
+              <h4 class="card-title">Add Organisation</h4>
+              <p class="card-category">Add the list of organisations you have worked for.</p>
+            </div>
+            <div class="card-body">
+
+              <form [formGroup]="uploadCompany" (ngSubmit)="AddCompanyDetails(uploadCompany.value)">
+                <div class="row">
+
+                  <div class="col-md-6">
+                    <mat-form-field class="example-full-width">
+                      <input matInput placeholder="Current Organisation (disabled)" value="Nineleaps " disabled>
+                    </mat-form-field>
+                  </div>
+                  <!-- <div class="col-md-3">
+                                            <mat-form-field class="example-full-width">
+                                              <input matInput placeholder="Username">
+                                            </mat-form-field>
+                                        </div> -->
+                  <!-- <div class="col-md-6">
+                                            <mat-form-field class="example-full-width">
+                                              <input matInput placeholder="Email address" type="email">
+                                            </mat-form-field>
+                                        </div> -->
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <mat-form-field class="example-full-width">
+                      <input matInput placeholder="Organisation Name" formControlName="CompanyName" type="text"
+                        required>
+                      <!-- <mat-error>
+                                                <span *ngIf="!uploadCompany.get('CompanyName').valid && uploadCompany.get('CompanyName').touched">Please enter the number of years you have worked in this industry.</span>
+                                              </mat-error> -->
+                    </mat-form-field>
+                  </div>
+                  <div class="col-md-6">
+                    <mat-form-field class="example-full-width">
+                      <input matInput name="Designation" formControlName="Designation" placeholder="Designation"
+                        type="text" required>
+                    </mat-form-field>
+                    <!-- <mat-error>
+                                              <span *ngIf="!uploadCompany.get('Designation').valid && uploadCompany.get('Designation').touched">Please enter the number of years you have worked in this industry.</span>
+                                            </mat-error> -->
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <mat-form-field class="example-full-width">
+                      <input matInput [matDatepicker]="picker1" name="EmployeeStartDate"
+                        formControlName="EmployeeStartDate" placeholder="Start Date" type="text" required>
+                      <mat-datepicker-toggle matSuffix [for]="picker1"> </mat-datepicker-toggle>
+                      <mat-datepicker #picker1></mat-datepicker>
+
+                      <mat-error>
+                        <span
+                          *ngIf="!uploadCompany.get('EmployeeStartDate').valid && uploadCompany.get('EmployeeStartDate').touched">Please
+                          enter the number of years you have worked in this industry.</span>
+                      </mat-error>
+                    </mat-form-field>
+                  </div>
+
+
+                  <div class="col-md-6">
+                    <mat-form-field class="example-full-width">
+                      <input matInput [matDatepicker]="picker2" formControlName="EmployeeEndDate"
+                        placeholder="EmployeeEndDate">
+                      <mat-datepicker-toggle matSuffix [for]="picker2"> </mat-datepicker-toggle>
+                      <mat-datepicker #picker2></mat-datepicker>
+                    </mat-form-field>
+                  </div>
+                </div>
+                <!-- <div class="col-md-4">
+                                          <mat-form-field class="example-full-width">
+                                            <input matInput placeholder="Country" type="text">
+                                          </mat-form-field>
+                                        </div>
+                                        <div class="col-md-4">
+                                          <mat-form-field class="example-full-width">
+                                            <input matInput placeholder="Postal Code" type="text">
+                                          </mat-form-field>
+                                        </div>
+                                    </div> -->
+                <div class="row">
+                  <div class="col-md-12">
+                    <label>Summary</label>
+                    <mat-form-field class="example-full-width">
+                      <!-- <fate-ui uiId="foo"></fate-ui> -->
+                      <!-- <fate-input name ="bar "uiId="foo" [(ngModel)]="someHtml"></fate-input> -->
+                      <fate-material name="Hello" formControlName="Roles"
+                        placeholder="Enter roles and responsibilities in bullet points" placeholder="Some text">
+
+                      </fate-material>
+                      <mat-error>
+                      <span *ngIf="!uploadCompany.get('Roles').valid && uploadCompany.get('Roles').touched">Please enter  a proper summary</span> 
+                      </mat-error>
+                    </mat-form-field>
+
+                  </div>
+                </div>
+                <button mat-raised-button type="submit" [disabled]="!uploadCompany.valid" class="btn btn-info pull-right">Add Organisation</button>
+                <button mat-raised-button data-dismiss="modal" class="btn btn-danger pull-right">Cancel </button>
+
+                <div class="clearfix"></div>
+              </form>
+
+            </div>
+          </div>
+        </div>
+
+
+
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+
+<!-- This is where the Modal for Edit Company Starts -->
+
+<div id="myModal4" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg">
+  
+      <!-- Modal content-->
+      <div class="modal-content">
+  
+        <div class="modal-body">
+          <div class="alert alert-info" style="background-color: #28426C" role="alert">
+            <h5> <i class="material-icons pull-left" style="background-color:#28426C; color:white;">add_alert</i>The work
+              experience section on a resume is the nucleus around which other sections are built
+              <button type="button" style="color:white" class="close pull-right" data-dismiss="modal">&times;</button>
+            </h5>
+          </div>
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-header card-header-icon">
+                <div class="card-icon" style="background-color:#28426C">
+                  <i class="material-icons">perm_identity</i>
+                </div>
+                <h4 class="card-title">Edit Organisation</h4>
+                <p class="card-category">Edit the details of organisations you have worked for.</p>
+              </div>
+              <div class="card-body">
+  
+                <form [formGroup]="EditCompany" (ngSubmit)="EditCompanyDetails(EditCompany.value)">
+                  <div class="row">
+  
+                    <div class="col-md-6">
+                      <mat-form-field class="example-full-width">
+                        <input matInput placeholder="Current Organisation (disabled)" value="Nineleaps " disabled>
+                      </mat-form-field>
+                    </div>
+                    <!-- <div class="col-md-3">
+                                              <mat-form-field class="example-full-width">
+                                                <input matInput placeholder="Username">
+                                              </mat-form-field>
+                                          </div> -->
+                    <!-- <div class="col-md-6">
+                                              <mat-form-field class="example-full-width">
+                                                <input matInput placeholder="Email address" type="email">
+                                              </mat-form-field>
+                                          </div> -->
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <mat-form-field class="example-full-width">
+                        <input matInput placeholder="Organisation Name" formControlName="CompanyName" type="text"
+                          required>
+                        <mat-error>
+                                                  <span *ngIf="!EditCompany.get('CompanyName').valid && EditCompany.get('CompanyName').touched"> Organisation name cannot be empty</span>
+                                                </mat-error> 
+                      </mat-form-field>
+                    </div>
+                    <div class="col-md-6">
+                      <mat-form-field class="example-full-width">
+                        <input matInput name="Designation" formControlName="Designation" placeholder="Designation"
+                          type="text" required>
+                      </mat-form-field>
+                      <mat-error>
+                                                <span *ngIf="!EditCompany.get('Designation').valid && EditCompany.get('Designation').touched">Enter your designation at this particular company</span>
+                                              </mat-error> 
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <mat-form-field class="example-full-width">
+                        <input matInput [matDatepicker]="editstart" name="EmployeeStartDate"
+                          formControlName="EmployeeStartDate" placeholder="Start Date" type="text" required>
+                        <mat-datepicker-toggle matSuffix [for]="editstart"> </mat-datepicker-toggle>
+                        <mat-datepicker #editstart></mat-datepicker>
+  
+                        <mat-error>
+                          <span
+                            *ngIf="!EditCompany.get('EmployeeStartDate').valid && EditCompany.get('EmployeeStartDate').touched">Please
+                            enter the day you started</span>
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+  
+  
+                    <div class="col-md-6">
+                      <mat-form-field class="example-full-width">
+                        <input matInput [matDatepicker]="editend" formControlName="EmployeeEndDate"
+                          placeholder="EmployeeEndDate">
+                        <mat-datepicker-toggle matSuffix [for]="editend"> </mat-datepicker-toggle>
+                        <mat-datepicker #editend></mat-datepicker>
+                        <mat-error>
+                            <span
+                              *ngIf="!EditCompany.get('EmployeeEndDate').valid && EditCompany.get('EmployeeEndDate').touched">Please
+                              enter the day you left this particular organisation</span>
+                          </mat-error>
+  
+                      </mat-form-field>
+                    </div>
+                  </div>
+                  <!-- <div class="col-md-4">
+                                            <mat-form-field class="example-full-width">
+                                              <input matInput placeholder="Country" type="text">
+                                            </mat-form-field>
+                                          </div>
+                                          <div class="col-md-4">
+                                            <mat-form-field class="example-full-width">
+                                              <input matInput placeholder="Postal Code" type="text">
+                                            </mat-form-field>
+                                          </div>
+                                      </div> -->
+                  <div class="row">
+                    <div class="col-md-12">
+                      <label>Summary</label>
+                      <mat-form-field class="example-full-width">
+                        <!-- <fate-ui uiId="foo"></fate-ui> -->
+                        <!-- <fate-input name ="bar "uiId="foo" [(ngModel)]="someHtml"></fate-input> -->
+                        <fate-material name="Hello" formControlName="Roles"
+                          placeholder="Enter roles and responsibilities in bullet points" placeholder="Some text">
+  
+                        </fate-material>
+                        <!-- <mat-error>
+                          <span *ngIf="!uploadCompany.get('EmployeeSummary').valid && uploadCompany.get('EmployeeSummary').touched">Please enter  a proper summary in bulleted points</span>
+                        </mat-error> -->
+                      </mat-form-field>
+  
+                    </div>
+                  </div>
+                  <button mat-raised-button type="submit" [disabled]="!EditCompany.valid" class="btn btn-info pull-right">Edit Organisation</button>
+                  <button mat-raised-button data-dismiss="modal" class="btn btn-danger pull-right">Cancel </button>
+  
+                  <div class="clearfix"></div>
+                </form>
+  
+              </div>
+            </div>
+          </div>
+  
+  
+  
+        </div>
+  
+      </div>
+  
+    </div>
+  </div>
+
+
+<div id="myModal2" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-lg">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+
+      <div class="modal-body">
+        <div class="alert alert-info" style="background-color: #28426C" role="alert">
+          <h5> <i class="material-icons pull-left"
+              style="background-color:#28426C; color:white;">add_alert</i>Describing projects effectively, gives a
+            real-life look at the types of work you can produce.
+            <button type="button" style="color:white" class="close pull-right" data-dismiss="modal">&times;</button>
+          </h5>
+        </div>
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-header card-header-icon">
+              <div class="card-icon" style="background-color:#28426C">
+                <i class="material-icons">event_available</i>
+              </div>
+              <h4 class="card-title">Edit Project</h4>
+              <p class="card-category">Edit the Project of the particular organisation you have worked for.</p>
+            </div>
+            <div class="card-body">
+
+              <form [formGroup]="uploadProject" (ngSubmit)="EditIndividualProject(uploadProject.value)">
+                <div class="row">
+
+                  <div class="col-md-3">
+                    <mat-form-field class="example-full-width">
+                      <input matInput placeholder="Current Organisation" value="Nineleaps" disabled>
+                    </mat-form-field>
+                  </div>
+<!-- 
+                  <div class="col-md-3">
+                      <mat-form-field class="example-full-width">
+                        <input matInput placeholder="ProjectId" formControlName="ProjectId" [readOnly]="true">
+                      </mat-form-field>
+                  </div> -->
+                  <!-- <div class="col-md-3">
+                                              <mat-form-field class="example-full-width">
+                                                <input matInput placeholder="Company Id" formControlName="CompanyId" disabled>
+                                              </mat-form-field>
+                                          </div>
+                          <div class="col-md-6">
+                                              <mat-form-field class="example-full-width">
+                                                <input matInput placeholder="Employee Id" formControlName="EmployeeId" type="text" disabled>
+                                              </mat-form-field>
+                                          </div>  -->
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <mat-form-field class="example-full-width">
+                      <input matInput placeholder="Project Name" formControlName="ProjectName" type="text" required>
+                      <!-- <mat-error>
+                                                  <span *ngIf="!uploadCompany.get('CompanyName').valid && uploadCompany.get('CompanyName').touched">Please enter the number of years you have worked in this industry.</span>
+                                                </mat-error> -->
+                    </mat-form-field>
+                  </div>
+                  <div class="col-md-6">
+                    <mat-form-field class="example-full-width">
+                      <input matInput name="Project Technologies" formControlName="ProjectTech"
+                        placeholder="Technologies used" type="text" required>
+                    </mat-form-field>
+                    <!-- <mat-error>
+                                                <span *ngIf="!uploadCompany.get('Designation').valid && uploadCompany.get('Designation').touched">Please enter the number of years you have worked in this industry.</span>
+                           </mat-error> -->
+                  </div>
+                </div>
+                <!-- <div class="row">
+                          <div class="col-md-6">
+                            <mat-form-field class="example-full-width">
+                              <input matInput [matDatepicker]="picker1" name="EmployeeStartDate" formControlName="EmployeeStartDate"
+                                placeholder="Start Date" type="text" required>
+                                <mat-datepicker-toggle matSuffix [for]="picker1"> </mat-datepicker-toggle>
+                              <mat-datepicker #picker1  ></mat-datepicker>
+                              
+                              <mat-error>
+                                                  <span *ngIf="!uploadCompany.get('EmployeeStartDate').valid && uploadCompany.get('EmployeeStartDate').touched">Please enter the number of years you have worked in this industry.</span>
+                                                </mat-error>
+                            </mat-form-field>
+                          </div>
+          
+          
+                          <div class="col-md-6">
+                            <mat-form-field class="example-full-width">
+                              <input matInput [matDatepicker]="picker2" formControlName="EmployeeEndDate"
+                                placeholder="EmployeeEndDate">
+                              <mat-datepicker-toggle matSuffix [for]="picker2"> </mat-datepicker-toggle>
+                              <mat-datepicker #picker2></mat-datepicker>
+                              </mat-form-field>
+                          </div>
+                        </div> -->
+                <!-- <div class="col-md-4">
+                                            <mat-form-field class="example-full-width">
+                                              <input matInput placeholder="Country" type="text">
+                                            </mat-form-field>
+                                          </div>
+                                          <div class="col-md-4">
+                                            <mat-form-field class="example-full-width">
+                                              <input matInput placeholder="Postal Code" type="text">
+                                            </mat-form-field>
+                                          </div>
+                                      </div> -->
+                <div class="row">
+                  <div class="col-md-12">
+                    <label>Summary</label>
+                    <mat-form-field class="example-full-width">
+                      <!-- <fate-ui uiId="foo"></fate-ui> -->
+                      <!-- <fate-input name ="bar "uiId="foo" [(ngModel)]="someHtml"></fate-input> -->
+                      <textarea matInput placeholder="Summarize your project in not more than 60 words"
+                        formControlName="ProjectDescription" required></textarea>
+
+                      <mat-error>
+                        <!-- <span *ngIf="!uploadCompany.get('EmployeeSummary').valid && uploadCompany.get('EmployeeSummary').touched">Please enter  a proper summary</span> -->
+                      </mat-error>
+                    </mat-form-field>
+
+                  </div>
+                </div>
+                <button mat-raised-button type="submit" [disabled]="!uploadProject.valid"   class="btn btn-info pull-right">Edit Project</button>
+                <button mat-raised-button data-dismiss="modal" class="btn btn-danger pull-right">Cancel</button>
+
+                <div class="clearfix"></div>
+              </form>
+
+            </div>
+          </div>
+        </div>
+
+
+
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+
+
+
+<div id="myModal3" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-lg">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+
+      <div class="modal-body">
+        <div class="alert alert-info" style="background-color: #28426C" role="alert">
+          <h5> <i class="material-icons pull-left"
+              style="background-color:#28426C; color:white;">add_alert</i>Describing projects effectively, gives a
+            real-life look at the types of work you can produce.
+            <button type="button" style="color:white" class="close pull-right" data-dismiss="modal">&times;</button>
+          </h5>
+        </div>
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-header card-header-icon">
+              <div class="card-icon" style="background-color:#28426C">
+                <i class="material-icons">event_available</i>
+              </div>
+              <h4 class="card-title">Add Project</h4>
+              <p class="card-category">Add the Project of the particular organisation you have worked for.</p>
+            </div>
+            <div class="card-body">
+
+              <form [formGroup]="addProject" (ngSubmit)="AddCompanyProject(addProject.value)">
+                <div class="row">
+
+                  <div class="col-md-3">
+                    <mat-form-field class="example-full-width">
+                      <input matInput placeholder="Current Organisation (disabled)" value="Nineleaps" disabled>
+                    </mat-form-field>
+                  </div>
+                 
+ <!-- 
+                            <div class="col-md-6">
+                                                <mat-form-field class="example-full-width">
+                                                  <input matInput placeholder="Employee Id" formControlName="EmployeeId" type="text" disabled>
+                                                </mat-form-field>
+                                            </div>  -->
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <mat-form-field class="example-full-width">
+                      <input matInput placeholder="Project Name" formControlName="ProjectName" type="text" required>
+                      <!-- <mat-error>
+                                                    <span *ngIf="!uploadCompany.get('CompanyName').valid && uploadCompany.get('CompanyName').touched">Please enter the number of years you have worked in this industry.</span>
+                                                  </mat-error> -->
+                    </mat-form-field>
+                  </div>
+                  <div class="col-md-6">
+                    <mat-form-field class="example-full-width">
+                      <input matInput name="Project Technologies" formControlName="ProjectTech"
+                        placeholder="Technologies used" type="text" required>
+                    </mat-form-field>
+                    <!-- <mat-error>
+                                                  <span *ngIf="!uploadCompany.get('Designation').valid && uploadCompany.get('Designation').touched">Please enter the number of years you have worked in this industry.</span>
+                             </mat-error> -->
+                  </div>
+                </div>
+                <!-- <div class="row">
+                            <div class="col-md-6">
+                              <mat-form-field class="example-full-width">
+                                <input matInput [matDatepicker]="picker1" name="EmployeeStartDate" formControlName="EmployeeStartDate"
+                                  placeholder="Start Date" type="text" required>
+                                  <mat-datepicker-toggle matSuffix [for]="picker1"> </mat-datepicker-toggle>
+                                <mat-datepicker #picker1  ></mat-datepicker>
+                                
+                                <mat-error>
+                                                    <span *ngIf="!uploadCompany.get('EmployeeStartDate').valid && uploadCompany.get('EmployeeStartDate').touched">Please enter the number of years you have worked in this industry.</span>
+                                                  </mat-error>
+                              </mat-form-field>
+                            </div>
+            
+            
+                            <div class="col-md-6">
+                              <mat-form-field class="example-full-width">
+                                <input matInput [matDatepicker]="picker2" formControlName="EmployeeEndDate"
+                                  placeholder="EmployeeEndDate">
+                                <mat-datepicker-toggle matSuffix [for]="picker2"> </mat-datepicker-toggle>
+                                <mat-datepicker #picker2></mat-datepicker>
+                                </mat-form-field>
+                            </div>
+                          </div> -->
+                <!-- <div class="col-md-4">
+                                              <mat-form-field class="example-full-width">
+                                                <input matInput placeholder="Country" type="text">
+                                              </mat-form-field>
+                                            </div>
+                                            <div class="col-md-4">
+                                              <mat-form-field class="example-full-width">
+                                                <input matInput placeholder="Postal Code" type="text">
+                                              </mat-form-field>
+                                            </div>
+                                        </div> -->
+                <div class="row">
+                  <div class="col-md-12">
+                    <label>Summary</label>
+                    <mat-form-field class="example-full-width">
+                      <!-- <fate-ui uiId="foo"></fate-ui> -->
+                      <!-- <fate-input name ="bar "uiId="foo" [(ngModel)]="someHtml"></fate-input> -->
+                      <textarea matInput placeholder="Summarize your project in not more than 60 words"
+                        formControlName="ProjectDescription" required></textarea>
+
+                      <mat-error>
+                        <!-- <span *ngIf="!uploadCompany.get('EmployeeSummary').valid && uploadCompany.get('EmployeeSummary').touched">Please enter  a proper summary</span> -->
+                      </mat-error>
+                    </mat-form-field>
+
+                  </div>
+                </div>
+                <button mat-raised-button type="submit"  class="btn btn-info pull-right">Add Project</button>
+                <button mat-raised-button data-dismiss="modal" class="btn btn-danger pull-right">Cancel</button>
+
+                <div class="clearfix"></div>
+              </form>
+
+            </div>
+          </div>
+        </div>
+
+
+
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+
+
+
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-8">
+        <div class="card">
+          <div class="card-header card-header-icon">
+            <div class="card-icon" style="background-color:#28426C">
+              <i class="material-icons">event_available</i>
+            </div>
+            <h4 class="card-title">Experience</h4>
+            <p class="card-category">Add the Project of the particular organisation you have worked for.</p>
+          </div>
+          <span class="example-scroll">
+          <div class="card-body">
+
+            <!-- <li>
+              <button mat-raised-button data-toggle="modal" data-target="#myModal">Add Company</button>
+            </li>
+            <li>
+              <button mat-raised-button data-toggle="modal" (click)="GetIndividualProject()"
+                data-target="#myModal2">Edit Project</button>
+            </li>
+            <li>
+              <button mat-raised-button data-toggle="modal" data-target="#myModal3">Add Project</button>
+            </li> -->
+         
+<ng-container *ngFor="let c of companyDetails">
+           <mat-list>
+           <mat-toolbar>    
+              <mat-toolbar-row style="background-color: #28426C; color:white">
+              
+                <span> {{c.CompanyName}} </span> &nbsp;
+                <button mat-icon-button data-toggle="modal" (click)="GetCompanyById(1)" data-target="#myModal4"><i class="material-icons">
+                    edit
+                  </i>
+                 </button> 
+                <span class="example-fill-remaining-space"></span>
+                    
+                    <button mat-button data-toggle="modal" matTooltip="Add Project" [matTooltipPosition]="'below'" data-target="#myModal3"> Add Project <i class="material-icons">
+                        add_circle
+                      </i>
+                     </button> 
+
+                    
+                  </mat-toolbar-row>
+                </mat-toolbar>
+                <mat-list-item *ngFor="let folder of folders">
+                    <button mat-icon-button data-toggle="modal" matTooltip="Edit Project" [matTooltipPosition]="'above'" (click)="GetIndividualProject(folder.id)" style="color: teal"data-target="#myModal2"><i class="material-icons">
+                   edit
+                 </i>
+                </button> 
+                <button mat-icon-button data-toggle="modal" matTooltip="Delete Project" [matTooltipPosition]="'above'" data-target="#myModal3"><i class="material-icons" style="color: tomato">
+                    delete
+                  </i>
+                 </button>                 
+                 <h4 mat-line>{{folder.name}}</h4>
+                  <p mat-line> {{folder.updated | date}} </p>
+                </mat-list-item>
+                <mat-divider></mat-divider>
+              
+              </mat-list>
+ </ng-container>
+
+
+          </div>
+          </span>
+        </div>
+      </div>
+      <!--  MODAL NAMES ---
+
+        MyModa1 is for adding company
+        MyModal 2 is for Editing Project
+        MyModal3 is for Adding New Project 
+
+
+  -->
+
+      <div class="col-md-4">
+        <div class="card card-profile">
+          <div class="card-avatar">
+            <a href="javascript:void(0)">
+              <img src="https://bit.ly/2MWEHRJ">
+            </a>
+          </div>
+          <div class="card-body">
+            <h6 class="card-category text-gray"></h6>
+            <h4 class="card-title"> Professional Experience Guidelines </h4>
+            <p class="card-description">
+              Pick the 3-4 most impressive parts of your resume and reword them into snappy and attractive words. Tease
+              your potential clients into reading further.
+              To maximize the impact, pack your professional summary with relevant keywords. Even better, try to
+              quantify each achievement.
+              Also, <b>The work experience</b> section on a resume is the nucleus around which other sections are built.
+            </p>
+            <!-- <a href="javascript:void(0)" class="btn btn-danger btn-round">Follow</a> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

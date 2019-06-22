@@ -1,0 +1,129 @@
+<div class="main-content">
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col-md-8">
+              <div class="card">
+                  <div class="card-header card-header-icon">
+                      <div class="card-icon" style="background-color: darkblue">
+                          <i class="material-icons">perm_identity</i>
+                        </div>
+                      <h4 class="card-title">Edit Profile</h4>
+                      <p class="card-category">Complete your profile</p>
+                  </div>
+                  <div class="card-body">
+                      
+                      <form [formGroup] = "uploadProfile" (ngSubmit)="Save(uploadProfile.value)">
+                          <div class="row">
+                           
+                              <div class="col-md-6">
+                                <mat-form-field class="example-full-width">
+                                    <input matInput placeholder="Company (disabled)" value="Nineleaps " disabled>
+                                  </mat-form-field>
+                              </div>
+                              <!-- <div class="col-md-3">
+                                  <mat-form-field class="example-full-width">
+                                    <input matInput placeholder="Username">
+                                  </mat-form-field>
+                              </div> -->
+                              <!-- <div class="col-md-6">
+                                  <mat-form-field class="example-full-width">
+                                    <input matInput placeholder="Email address" type="email">
+                                  </mat-form-field>
+                              </div> -->
+                          </div>
+                          <div class="row">
+                              <div class="col-md-6">
+                                <mat-form-field class="example-full-width">
+                                  <input matInput placeholder="First Name" formControlName="EmployeeFirstName"  
+                                   type="text" required>
+                                   <mat-error>
+                                      <span *ngIf="!uploadProfile.get('EmployeeFirstName').valid && uploadProfile.get('EmployeeFirstName').touched">Please enter the number of years you have worked in this industry.</span>
+                                    </mat-error>
+                                </mat-form-field>
+                              </div>
+                              <div class="col-md-6">
+                                <mat-form-field class="example-full-width">
+                                  <input matInput
+                                  formControlName="EmployeeLastName" placeholder="Last Name" type="text" required>
+                                </mat-form-field>
+                                <mat-error>
+                                    <span *ngIf="!uploadProfile.get('EmployeeLastName').valid && uploadProfile.get('EmployeeLastName').touched">Please enter the number of years you have worked in this industry.</span>
+                                  </mat-error>
+                              </div>
+                          </div>
+                          <div class="row">
+                              <div class="col-md-12">
+                                <mat-form-field class="example-full-width">
+                                  <input matInput formControlName="EmployeeExperience" 
+                                  placeholder="Experience" type="text" required>
+                                  <mat-error>
+                                      <span *ngIf="!uploadProfile.get('EmployeeExperience').valid && uploadProfile.get('EmployeeExperience').touched">Please enter the number of years you have worked in this industry.</span>
+                                    </mat-error>
+                                </mat-form-field>
+                              </div>
+                          </div> 
+                          <!-- <div class="row">
+                              <div class="col-md-4">
+                                <mat-form-field class="example-full-width">
+                                  <input matInput placeholder="City" type="text">
+                                </mat-form-field>
+                              </div>
+                              <div class="col-md-4">
+                                <mat-form-field class="example-full-width">
+                                  <input matInput placeholder="Country" type="text">
+                                </mat-form-field>
+                              </div>
+                              <div class="col-md-4">
+                                <mat-form-field class="example-full-width">
+                                  <input matInput placeholder="Postal Code" type="text">
+                                </mat-form-field>
+                              </div>
+                          </div> -->
+                          <div class="row">
+                              <div class="col-md-12">
+                                <label>Summary</label>
+                                <mat-form-field class="example-full-width">
+                                   <textarea matInput placeholder="Summarize your  skills, as they pertain to the client requirements"
+                                    formControlName="EmployeeSummary" required></textarea>
+                                    <mat-error>
+                                        <span *ngIf="!uploadProfile.get('EmployeeSummary').valid && uploadProfile.get('EmployeeSummary').touched">Please enter  a proper summary</span>
+                                      </mat-error>
+                                 </mat-form-field>
+                                  <!-- <div class="form-group">
+
+                                      <div class="form-group">
+                                          <label class="bmd-label-floating"> Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo.</label>
+                                          <textarea class="form-control" rows="5"></textarea>
+                                      </div>
+                                  </div> -->
+                              </div>
+                          </div>
+                          <button mat-raised-button type="submit" [disabled]="!uploadProfile.valid" class="btn btn-info pull-right">Update Profile</button>
+                          <div class="clearfix"></div>
+                      </form>
+                  
+                  </div>
+              </div>
+          </div>
+          <div class="col-md-4">
+              <div class="card card-profile">
+                  <div class="card-avatar">
+                      <a href="javascript:void(0)">
+                          <img src="https://bit.ly/2MWEHRJ">
+                      </a>
+                  </div>
+                  <div class="card-body">
+                      <h6 class="card-category text-gray"></h6>
+                      <h4 class="card-title"> Professional Summary Guidelines </h4>
+                      <p class="card-description">
+                          Pick the 3-4 most impressive parts of your resume and reword them into snappy and attractive words. Tease your potential clients into reading further. 
+                          To maximize the impact, pack your professional summary with relevant keywords. Even better, try to quantify each achievement. 
+                          Also, <b>The work experience</b> section on a resume is the nucleus around which other sections are built.
+                      </p>
+                      <!-- <a href="javascript:void(0)" class="btn btn-danger btn-round">Follow</a> -->
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
